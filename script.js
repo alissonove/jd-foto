@@ -1,110 +1,116 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // ===== CONFIGURA SEU WHATSAPP AQUI =====
-  const numeroWhats = "5511999999999"; // troca pelo seu número com DDD
-  const mensagem = "Olá! Vim pelo site JB4 Estúdio Fotográfico e quero agendar um ensaio.";
+// JB4 ESTÚDIO FOTOGRÁFICO - SCRIPT COMPLETO
+document.addEventListener("DOMContentLoaded", function() {
 
-  document.getElementById('btnAgendar')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    const url = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
-  });
+  const track = document.getElementById("track");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dotsContainer = document.getElementById("dots");
 
-  // ===== SCROLL SUAVE =====
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      if (href.length > 1) {
-        e.preventDefault();
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
+  if (!track) return;
 
-  // ===== CARROSSEL 6 FOTOS - AUTOMÁTICO COM SETA =====
-  const track = document.getElementById('track');
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const dotsContainer = document.getElementById('dots');
+  const slides = track.children;
+  let currentIndex = 0;
+  const slideWidth = 296; // 280 + gap 16
 
-  if (track && nextBtn && prevBtn) {
-    let index = 0;
-    const slideWidth = 336; // 320px + 16px gap
-    const totalSlides = 6;
-    let autoPlay;
-
-    // Cria bolinhas
-    if (dotsContainer) {
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('span');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => {
-          index = i;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        dotsContainer.appendChild(dot);
-      }
+  // CRIAR DOTS
+  function createDots() {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
     }
-    const dots = dotsContainer? dotsContainer.querySelectorAll('span') : [];
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${index * slideWidth}px)`;
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-    }
-
-    function nextSlide() {
-      index = (index + 1) % totalSlides;
-      updateCarousel();
-    }
-
-    function prevSlide() {
-      index = (index - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    }
-
-    function startAutoPlay() {
-      autoPlay = setInterval(nextSlide, 3000); // passa a cada 3 segundos
-    }
-
-    function resetAutoPlay() {
-      clearInterval(autoPlay);
-      startAutoPlay();
-    }
-
-    nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
-    prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
-
-    // Pausa quando passa o mouse
-    track.addEventListener('mouseenter', () => clearInterval(autoPlay));
-    track.addEventListener('mouseleave', () => startAutoPlay());
-
-    // Swipe no celular
-    let startX = 0;
-    track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    track.addEventListener('touchend', e => {
-      const endX = e.changedTouches[0].clientX;
-      if (startX - endX > 50) { nextSlide(); resetAutoPlay(); }
-      if (endX - startX > 50) { prevSlide(); resetAutoPlay(); }
-    });
-
-    startAutoPlay();
   }
 
-  // ===== ANIMAÇÃO DE ENTRADA DAS FOTOS =====
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+  function updateDots() {
+    if (!dotsContainer) return;
+    const dots = dotsContainer.children;
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.remove("active");
+    }
+    if (dots[currentIndex]) {
+      dots[currentIndex].classList.add("active");
+    }
+  }
+
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+    track.scrollTo({
+      left: currentIndex * slideWidth,
+      behavior: "smooth"
+    });
+    updateDots();
+  }
+
+  // SETAS
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      goToSlide(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      goToSlide(currentIndex + 1);
+    });
+  }
+
+  // PASSAGEM AUTOMÁTICA A CADA 3 SEGUNDOS
+  let autoPlay = setInterval(() => {
+    goToSlide(currentIndex + 1);
+  }, 3000);
+
+  // PAUSAR AO PASSAR O MOUSE
+  track.addEventListener("mouseenter", () => clearInterval(autoPlay));
+  track.addEventListener("mouseleave", () => {
+    autoPlay = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 3000);
+  });
+
+  // ARRASTE COM O MOUSE / DEDO
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    track.classList.add("active");
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+  track.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+  track.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // SCROLL SUAVE NOS LINKS DO MENU
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      if (href === "#") return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.grid img,.grid-6 img,.slide').forEach(img => {
-    img.style.opacity = "0";
-    img.style.transform = "translateY(20px)";
-    img.style.transition = "opacity.8s ease, transform.8s ease";
-    observer.observe(img);
   });
+
+  // INICIAR
+  createDots();
+  console.log("JB4 - Site carregado | WhatsApp 11 98128-9588 | @jbfour | Rua Fioravante Begamini, 50");
 });
