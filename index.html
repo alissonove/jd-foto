@@ -1,89 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JBFour EStudio | Estúdio Fotográfico em Francisco Morato - SP</title>
-<meta name="description" content="JBFour Studio - Rua Fioravante Begamini, 50 - Centro, Francisco Morato.">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<title>JB4 Estúdio Fotográfico</title>
 <link rel="stylesheet" href="style.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"PhotoStudio","name":"JBFour Studio","telephone":"+5511981281079","address":{"streetAddress":"Rua Fioravante Begamini, 50","addressLocality":"Francisco Morato","addressRegion":"SP","postalCode":"07910-110","addressCountry":"BR"},"geo":{"latitude":-23.278587,"longitude":-46.745448},"url":"https://maps.app.goo.gl/mn39in4oqEX6bW4d6","sameAs":["https://www.instagram.com/jbfour/"]}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="bg-animado">
-  <div class="bg-slide bg1"></div>
-  <div class="bg-slide bg2"></div>
-  <div class="bg-slide bg3"></div>
-  <div class="bg-overlay"></div>
-</div>
-
-<nav>
-  <div class="logo">JB<span>FOUR</span> ESTUDIO</div>
-  <div class="nav-links">
-    <a href="https://www.instagram.com/jbfour/" target="_blank">@jbfour</a>
-    <a href="#sessoes">Sessões</a>
-    <a href="#contato">Contato</a>
+<header>
+  <div class="logo-area">
+    <img src="studio jb/logo.jpeg"JB4" class="logo-mini">
+    <span>JB4 Estúdio Fotográfico</span>
   </div>
-</nav>
+  <nav>
+    <a href="#inicio">INÍCIO</a>
+    <a href="#portfolio">PORTFÓLIO</a>
+    <a href="#sessoes">SESSÕES</a>
+    <a href="#sobre">SOBRE</a>
+    <a href="#contato">CONTATO</a>
+    <a class="btn-agendar" id="btnAgendar" href="#">AGENDAR</a>
+  </nav>
+</header>
 
-<a href="https://wa.me/5511981281079?text=Olá%20JBFour%20Studio!%20Quero%20agendar" class="whats" target="_blank">✆</a>
-<div id="lightbox"><img id="lb-img" alt=""></div>
-
-<section class="hero">
+<section id="inicio" class="hero">
   <div class="hero-text">
-    <h1>Fotografia<br>que fica<br>pra sempre.</h1>
-    <p>JBFour EStudio<br>Rua Fioravante Begamini, 50 - Centro<br>Francisco Morato - SP, 07910-110</p>
-    <a href="https://wa.me/5511981281079?text=Olá%20JBFour!%20Quero%20agendar" class="btn" target="_blank">Agendar no WhatsApp</a>
-    <a href="https://www.instagram.com/jbfour/" target="_blank" class="link-gold">→ @jbfour no Instagram</a>
+    <img src="studio jb/bia4.jpeg" alt="JB4" class="logo-hero">
+    <h1>Fotografia autoral e elegante</h1>
+    <p>Retratos com luz natural, sensibilidade e atemporalidade para capturar sua história com autenticidade.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#sessoes">VER SESSÕES</a>
+      <a class="btn btn-outline" href="#sobre">CONHECER O ESTÚDIO</a>
+    </div>
+    <div class="badges">Luz Natural • Ambiente minimalista • Edição Fine Art</div>
   </div>
   <div class="hero-img">
-    <img src="img/istockphoto-542805538-612x612.jpg" alt="JBFour Studio">
+    <img src="studio jb/bia6.jpeg" alt="Ensaio JB4">
   </div>
 </section>
 
-<section class="sessions" id="sessoes">
-  <h2>Em Destaque - 6 Fotos</h2>
-  <p class="sub">Passa sozinho a cada 3s + seta pro lado</p>
-
-  <div class="carousel-jbfour">
-    <div class="carousel-track" id="track">
-      <div class="slide"><img src="https://www.instagram.com/p/DSsGRh-DbsA/media/?size=l" alt=""><span>1 - JBFour</span></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800" alt=""><span>2 - Família</span></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800" alt=""><span>3 - Gestante</span></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800" alt=""><span>4 - Newborn</span></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800" alt=""><span>5 - Retrato</span></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1495745966610-d81f9b9f1a3a?q=80&w=800" alt=""><span>6 - Estúdio</span></div>
-    </div>
-    <button class="arrow prev" id="prev">‹</button>
-    <button class="arrow next" id="next">›</button>
-    <div class="dots" id="dots"></div>
-  </div>
-
-  <h2 class="titulo-sessoes">Sessões</h2>
+<section id="portfolio" class="portfolio">
+  <h2>PORTFÓLIO</h2>
   <div class="grid">
-    <div class="card"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600" alt=""><div class="info"><h3>Família</h3></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600" alt=""><div class="info"><h3>Gestante</h3></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=600" alt=""><div class="info"><h3>Newborn</h3></div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600" alt=""><div class="info"><h3>Retrato</h3></div></div>
+    <img src="studio jb/bia2.jpeg" alt="Masculino">
+    <img src="studio jb/bia 1.jpeg" alt="Casal">
+    <img src="studio jb/bia3.jpeg" alt="Feminino">
   </div>
 </section>
 
-<section class="contato-mapa" id="contato">
-  <div class="contato-info">
-    <h2>Onde Estamos</h2>
-    <p><strong>JBFour EStudio</strong><br>📍 Rua Fioravante Begamini, 50 - Centro<br>Francisco Morato - SP, 07910-110<br><br>📱 (11) 98128-1079<br>📸 @jbfour</p>
-    <a href="https://maps.app.goo.gl/mn39in4oqEX6bW4d6" target="_blank" class="btn dark">Abrir no Google Maps</a>
-    <a href="https://wa.me/5511981281079" target="_blank" class="btn btn-whats">WhatsApp</a>
+<!-- CARROSSEL 6 FOTOS NA MESMA LINHA COM SETA -->
+<section class="sessao-fotos">
+  <h2>SESSÕES RECENTES</h2>
+  <span class="sub">Arraste ou use as setas • Passagem automática</span>
+  <div class="carousel-wrapper">
+    <button class="arrow left" id="prevBtn">‹</button>
+    <div class="carousel-track" id="track">
+      <div class="slide"><img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.21 (1).jpeg"><span>Feminino • Luz Natural</span></div>
+      <div class="slide"><img src="studio jb/WhatsApp Image 2026-10-01 at 21.00.52.jpeg"><span>Retrato Editorial</span></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600"><span>Masculino</span></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=600"><span>Casal no Campo</span></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600"><span>Gestante</span></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1520813792240-56fc4a594c23?w=600"><span>Família</span></div>
+    </div>
+    <button class="arrow right" id="nextBtn">›</button>
   </div>
-  <div class="mapa-box">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.5!2d-46.745448!3d-23.278587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sRua%20Fioravante%20Begamini%2C%2050%2C%20Francisco%20Morato!5e0!3m2!1spt-BR!2sbr" allowfullscreen loading="lazy"></iframe>
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- SESSÃO 1 - 6 FOTOS -->
+<section id="sessoes" class="galeria">
+  <h2>ENSAIO FEMININO</h2>
+  <p>Luz natural, leveza e sofisticação</p>
+  <div class="grid-6">
+    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500" alt="">
   </div>
 </section>
 
-<footer>JBFour Studio • Rua Fioravante Begamini, 50 - Centro - Francisco Morato - SP • 11 98128-1079</footer>
-<script src="schipt.js"></script>
+<!-- SESSÃO 2 - 6 FOTOS -->
+<section class="galeria bg-bege">
+  <h2>CASAL & FAMÍLIA</h2>
+  <p>Histórias reais no campo e no estúdio</p>
+  <div class="grid-6">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.15.jpeg" alt="">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.16.jpeg" alt="">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.17 (1).jpeg" alt="">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.17.jpeg" alt="">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.18.jpeg" alt="">
+    <img src="studio jb/WhatsApp Image 2026-10-01 at 20.56.20 (1).jpeg" alt="">
+  </div>
+</section>
+
+<!-- SESSÃO 3 - 6 FOTOS -->
+<section class="galeria">
+  <h2>ESTÚDIO & BASTIDORES</h2>
+  <p>Ambiente minimalista, luz de janela, edição Fine Art</p>
+  <div class="grid-6">
+    <img src="https://images.unsplash.com/photo-1554048612-b6a97ae9aa07?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1502982720700-bfff97f2ec80?w=500" alt="">
+    <img src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=500" alt="">
+  </div>
+</section>
+
+<section id="sobre" class="sobre">
+  <h2>SOBRE O JB4</h2>
+  <p>Somos um estúdio dedicado à fotografia que valoriza a naturalidade. Cada ensaio é pensado para revelar a essência de forma elegante e autêntica, com direção cuidadosa e luz natural.</p>
+  <div class="icons">
+    <span>📷 ensaio pessoal</span>
+    <span>🤍 ensaios casal & família</span>
+    <span>🌸 moda & retrato</span>
+  </div>
+</section>
+
+<footer id="contato">
+  <span>JB4 Estúdio Fotográfico © 2024 — Todos os direitos reservados</span>
+  <span>Instagram @jb4studio • contato@jb4estudio.com.br • São Paulo, SP</span>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
